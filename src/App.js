@@ -5,18 +5,17 @@ import {
   Checkbox,
   Segment,
   Form,
-  Dropdown,
   Icon,
 } from "semantic-ui-react";
 import { useState } from "react";
 import { football, Geography } from "./questionsStore";
 
 function App() {
-  const queasionsTypesIntialState = {
-    easyQuestionsCount: 0,
-    mediumQuestionsCount: 0,
-    hardQuestionsCount: 0,
-  };
+  // const queasionsTypesIntialState = {
+  //   easyQuestionsCount: 0,
+  //   mediumQuestionsCount: 0,
+  //   hardQuestionsCount: 0,
+  // };
   const [state, setState] = useState({});
   const [questionsStore, setQuestionsStore] = useState([]);
   const [showQuestions, setShowQuestions] = useState(false);
@@ -26,9 +25,9 @@ function App() {
   // const [easyMark, setEasyMark] = useState(20)
   // const [mediumMark, setMediumMark] = useState(50)
   // const [hardMark, setHardMark] = useState(30)
-  const [queasionsTypes, setQueasionsTypes] = useState(
-    queasionsTypesIntialState
-  );
+  // const [queasionsTypes, setQueasionsTypes] = useState(
+  //   queasionsTypesIntialState
+  // );
   const copyFootball1 = [...football];
   const copyFootball2 = [...football];
   const copyGeography1 = [...Geography];
@@ -54,7 +53,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newquestionsStore = questionsStore.map((q, indx) =>
-      indx == questionIndex ? { ...q, text: modifiedQuestion.text } : q
+      indx === questionIndex ? { ...q, text: modifiedQuestion.text } : q
     );
     setQuestionsStore([...newquestionsStore]);
     setShowEditForm(false);
@@ -83,14 +82,14 @@ function App() {
   };
   const deleteQuestion = (index) => {
     console.log({ index });
-    const newquestionsStore = questionsStore.filter((q, indx) => indx != index);
+    const newquestionsStore = questionsStore.filter((q, indx) => indx !== index);
     console.log({ newquestionsStore });
     setQuestionsStore([...newquestionsStore]);
   };
-  const editQuetion = (index) => {
-    const newquestionsStore = questionsStore.map((q, indx) => indx != index);
-    setQuestionsStore([...newquestionsStore]);
-  };
+  // const editQuetion = (index) => {
+  //   const newquestionsStore = questionsStore.map((q, indx) => indx !== index);
+  //   setQuestionsStore([...newquestionsStore]);
+  // };
 
   // const getQuestionsTypes = () => {
   //   questionsStore.map(q =>{
@@ -162,7 +161,7 @@ function App() {
             Paper to make new quiz{" "}
           </h4>
         )}
-        {showEditForm && (
+         {showEditForm && (
           <Form>
             <Form.Field>
               <input
@@ -194,7 +193,7 @@ function App() {
                 onClick={() => {
                   setShowEditForm(true);
                   setQuestionIndex(index);
-                  setModifiedQuestion({ ...modifiedQuestion, text: q.text });
+                  setModifiedQuestion({...modifiedQuestion,text:q.text})
                 }}
               />
               <Icon
@@ -204,6 +203,7 @@ function App() {
               />
             </h4>
           ))}
+       
       </Segment>
 
       <Button
